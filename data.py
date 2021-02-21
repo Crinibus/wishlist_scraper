@@ -17,12 +17,6 @@ class Data:
         return data
 
     def format_data(self):
-        # for category in self.data.keys():
-        #     self.categories.update({category: []})
-
-        #     for sub_category in self.data[category]:
-        #         self.categories[category].append(SubCategory(sub_category, self.data[category][sub_category]))
-
         for category in self.data.keys():
             self.add_category(category, self.data[category])
 
