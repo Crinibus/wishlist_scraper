@@ -1,0 +1,18 @@
+{
+    "computer": {
+        "laptop": [
+            "https://www.komplett.dk/product/1166278/gaming/gaming-pc/baerbar/asus-tuf-gaming-f15-fx506lu-156-fhd-144-hz",
+            "https://www.proshop.dk/Baerbar/ASUS-TUF-Gaming-A17-FX706IU-H7209T/2877154"
+        ],
+        "gpu": [
+            "https://www.proshop.dk/Grafikkort/ASUS-GeForce-RTX-3080-ROG-STRIX-OC-10GB-GDDR6X-RAM-Grafikkort/2876859"
+        ]
+    },
+    "electronics": {
+        "speakers": [
+            "https://www.komplett.dk/product/849816/gaming/spiludstyr/gaming-hoejttalere/logitech-z533-pc-hoejttalere#",
+            "https://www.proshop.dk/Hoejttalere-PC/Logitech-Z533-Black-21-Kanal-Sort/2511000",
+            "https://www.avxperten.dk/pc-hoejtalere/logitech-pc-hoejttaler-subwoofer-z533.asp"
+        ]
+    }
+}
