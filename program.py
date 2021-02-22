@@ -1,4 +1,3 @@
-import json
 import questionary
 import data as dt
 
