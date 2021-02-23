@@ -76,7 +76,7 @@ class Websites:
     def Amazon(link: str):
         # get name and price of product at link
         soup = request_link(link)
-        name = soup.find('span', id='productTitle').text.strip().lower()
+        name = soup.find('span', id='productTitle').text.strip()
         price = soup.find('span', id='priceblock_ourprice').text.replace('$', '').split('.')[0].replace(',', '')
         return name, price
 
