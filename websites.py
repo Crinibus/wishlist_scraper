@@ -60,7 +60,7 @@ class Websites:
     def Computersalg(link: str):
         # get name and price of product at link
         soup = request_link(link)
-        name = soup.find('h1', itemprop='name').text
+        name = soup.findAll('td', class_='specLine')[1].text
         price = soup.find('span', itemprop='price').text.strip().split(',')[0].replace('.', '')
         return name, price
 
