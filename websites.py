@@ -56,11 +56,51 @@ class Websites:
         price = soup.find("div", class_="price").text.replace(u"\xa0DKK", "")
         return name, price
 
+    @staticmethod
+    def Computersalg(link: str):
+        # get name and price of product at link
+        soup = request_link(link)
+        name = soup.find('h1', itemprop='name').text
+        price = soup.find('span', itemprop='price').text.strip().split(',')[0].replace('.', '')
+        return name, price
+
+    @staticmethod
+    def Elgiganten(link: str):
+        # get name and price of product at link
+        soup = request_link(link)
+        name = soup.find('h1', class_='product-title').text
+        price = soup.find('div', class_='product-price-container').text.strip().replace(u'\xa0', '')
+        return name, price
+
+    @staticmethod
+    def Amazon(link: str):
+        # get name and price of product at link
+        soup = request_link(link)
+        name = soup.find('span', id='productTitle').text.strip().lower()
+        price = soup.find('span', id='priceblock_ourprice').text.replace('$', '').split('.')[0].replace(',', '')
+        return name, price
+
+    @staticmethod
+    def eBay(link: str):
+        # get name and price of product at link
+        soup = request_link(link)
+        if link.split('/')[3] == 'itm':
+            name = link.split('/')[4].replace('-', ' ')
+            price = soup.find('span', id='convbinPrice').text.replace('(including shipping)', '').replace('DKK ', '').replace(',', '')
+        else:
+            name = soup.find('h1', class_='product-title').text
+            price = soup.find('div', class_='display-price').text.replace('DKK ', '').replace(',', '')
+        return name, price
+
 
 GET_WEBSITE_METHOD = {
     "komplett": Websites.Komplett,
     "proshop": Websites.Proshop,
     "avxperten": Websites.AvXperten,
+    "computersalg": Websites.Computersalg,
+    "elgiganten": Websites.Elgiganten,
+    "amazon": Websites.Amazon,
+    "ebay": Websites.eBay,
 }
 
 
