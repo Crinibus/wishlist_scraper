@@ -7,8 +7,7 @@ class Websites:
     @staticmethod
     def Komplett(link: str):
         # get name and price of product at link
-        response = request_link(link)
-        soup = BeautifulSoup(response.text, "html.parser")
+        soup = request_link(link)
         name = soup.find("div", class_="product-main-info__info").h1.span.text
         price = (
             soup.find("span", class_="product-price-now")
@@ -20,8 +19,7 @@ class Websites:
     @staticmethod
     def Proshop(link: str):
         # get name and price of product at link
-        response = request_link(link)
-        soup = BeautifulSoup(response.text, "html.parser")
+        soup = request_link(link)
         name = soup.find("div", class_="col-xs-12 col-sm-7").h1.text
 
         try:
@@ -53,8 +51,7 @@ class Websites:
     @staticmethod
     def AvXperten(link: str):
         # get name and price of product at link
-        response = request_link(link)
-        soup = BeautifulSoup(response.text, "html.parser")
+        soup = request_link(link)
         name = soup.find("div", class_="content-head").text.strip()
         price = soup.find("div", class_="price").text.replace(u"\xa0DKK", "")
         return name, price
@@ -67,10 +64,10 @@ GET_WEBSITE_METHOD = {
 }
 
 
-def request_link(link: str):
+def request_link(link: str) -> BeautifulSoup:
     response = requests.get(link, headers=REQUEST_HEADER, cookies=REQUEST_COOKIES)
-
-    return response
+    soup = BeautifulSoup(response.text, "html.parser")
+    return soup
 
 
 def get_domain_from_link(link: str):
