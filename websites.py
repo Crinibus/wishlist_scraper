@@ -8,7 +8,7 @@ class Websites:
     def Komplett(link: str):
         # get name and price of product at link
         soup = request_link(link)
-        name = soup.find("div", class_="product-main-info__info").h1.span.text
+        name = soup.find("h1", itemprop="name").span.text
         price = (
             soup.find("span", class_="product-price-now")
             .text.strip(",-")
