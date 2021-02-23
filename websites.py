@@ -20,7 +20,7 @@ class Websites:
     def Proshop(link: str):
         # get name and price of product at link
         soup = request_link(link)
-        name = soup.find("div", class_="col-xs-12 col-sm-7").h1.text
+        name = soup.find("meta", property="og:title")["content"]
 
         try:
             # find normal price
