@@ -52,7 +52,7 @@ class Websites:
     def AvXperten(link: str):
         # get name and price of product at link
         soup = request_link(link)
-        name = soup.find("div", class_="content-head").text.strip()
+        name = soup.find("meta", property="og:title")['content']
         price = soup.find("div", class_="price").text.replace(u"\xa0DKK", "")
         return name, price
 
