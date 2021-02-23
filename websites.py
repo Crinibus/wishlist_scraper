@@ -110,7 +110,7 @@ def request_link(link: str) -> BeautifulSoup:
     return soup
 
 
-def get_domain_from_link(link: str):
+def get_domain_from_link(link: str) -> str:
     # get domain with "www." and ".com"
     domain = link.split("/")[2]
 
