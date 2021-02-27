@@ -43,6 +43,13 @@ def main():
     args = arg.argparse_setup()
     my_data = dt.Data("wishlist.json")
 
+    if args.add_wish:
+        super_category = args.add_wish[0]
+        sub_category = args.add_wish[1]
+        link = args.add_wish[2]
+
+        my_data.add_wish(super_category, sub_category, link)
+
     if args.all:
         show_all_data(my_data)
     else:
