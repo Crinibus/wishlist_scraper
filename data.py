@@ -16,6 +16,11 @@ class Data:
             data = json.load(json_file)
         return data
 
+    @staticmethod
+    def write_json(filename: str, data: dict) -> None:
+        with open(filename, "w") as json_file:
+            json.dump(data, json_file, indent=2)
+
     def format_data(self):
         for category in self.data.keys():
             self.add_category(category, self.data[category])
