@@ -1,5 +1,6 @@
 import questionary
 import data as dt
+import arguments as arg
 
 
 def show_all_data(data: dt.Data):
@@ -39,10 +40,13 @@ def show_user_choice(super_category: dt.SuperCategory, sub_category: dt.SubCateg
 
 
 def main():
+    args = arg.argparse_setup()
     my_data = dt.Data("wishlist.json")
 
-    show_all_data(my_data)
-    # get_user_choice(my_data)
+    if args.all:
+        show_all_data(my_data)
+    else:
+        get_user_choice(my_data)
 
 
 if __name__ == "__main__":
