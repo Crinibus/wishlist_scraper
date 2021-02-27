@@ -22,8 +22,6 @@ class Data:
             json.dump(data, json_file, indent=2)
 
     def format_data(self):
-        for category in self.data.keys():
-            self.add_category(category, self.data[category])
 
     def add_category(self, name: str, info: dict):
         new_category = SuperCategory(name, info)
@@ -33,6 +31,18 @@ class Data:
         for cat in self.categories:
             if cat.name == cat_name:
                 return cat
+
+    def add_wish(self, super_category: str, sub_category: str, link: str):
+        if super_category not in self.data.keys():
+            self.data[super_category] = {}
+
+        if sub_category not in self.data[super_category]:
+            self.data[super_category][sub_category] = []
+
+        self.data[super_category][sub_category].append(link)
+
+        Data.write_json(self.filename, self.data)
+        self.format_data()
 
 
 class SuperCategory:
