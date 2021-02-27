@@ -44,7 +44,7 @@ class SuperCategory:
     def add_sub_category(self, name: str, info: dict):
         new_sub_category = SubCategory(name, info)
         self.sub_categories.append(new_sub_category)
-    
+
     def get_sub_category(self, sub_cat_name: str):
         for sub_cat in self.sub_categories:
             if sub_cat.name == sub_cat_name:
@@ -69,10 +69,7 @@ class SubCategory:
     def get_info_for_products(self):
         # Create threads
         threads = [
-            threading.Thread(
-                target=product.get_info, name=f"thread_{product.domain}_{index}"
-            )
-            for index, product in enumerate(self.products)
+            threading.Thread(target=product.get_info) for product in self.products
         ]
 
         # Start all threads
