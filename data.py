@@ -22,6 +22,12 @@ class Data:
             json.dump(data, json_file, indent=2)
 
     def format_data(self):
+        self.categories = [
+            SuperCategory(name, info) for name, info in self.data.items()
+        ]
+        # self.categories = []
+        # for category in self.data.keys():
+        #     self.add_category(category, self.data[category])
 
     def add_category(self, name: str, info: dict):
         new_category = SuperCategory(name, info)
