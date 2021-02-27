@@ -16,12 +16,19 @@ def show_all_data(data: dt.Data):
 
 def get_user_choice(data: dt.Data):
     # Get user choice for super category
-    user_super_category_name = questionary.select("Choose super category:", choices=[cat.name for cat in data.categories]).ask()
-    # Get the class the user has chosen as super category 
+    user_super_category_name = questionary.select(
+        "Choose super category:", choices=[cat.name for cat in data.categories]
+    ).ask()
+    
+    # Get the class the user has chosen as super category
     user_super_category = data.get_category(user_super_category_name)
 
     # Get user choice for sub category
-    user_sub_category_name = questionary.select("Choose sub category:", choices=[cat.name for cat in user_super_category.sub_categories]).ask()
+    user_sub_category_name = questionary.select(
+        "Choose sub category:",
+        choices=[cat.name for cat in user_super_category.sub_categories],
+    ).ask()
+
     # Get the class the user has chosen as sub category
     user_sub_category = user_super_category.get_sub_category(user_sub_category_name)
 
