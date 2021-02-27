@@ -59,8 +59,11 @@ class SuperCategory:
         self.format_info()
 
     def format_info(self):
-        for sub_cat in self.info:
-            self.add_sub_category(sub_cat, self.info[sub_cat])
+        self.sub_categories = [
+            SubCategory(name, info) for name, info in self.info.items()
+        ]
+        # for sub_cat in self.info:
+        #     self.add_sub_category(sub_cat, self.info[sub_cat])
 
     def add_sub_category(self, name: str, info: dict):
         new_sub_category = SubCategory(name, info)
