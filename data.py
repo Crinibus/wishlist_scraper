@@ -126,4 +126,4 @@ class Product:
         self.name, self.price = web.GET_WEBSITE_METHOD[self.domain](self.link)
 
     def __str__(self) -> str:
-        return f"{self.name} - {self.price}"
+        return f"{self.price} - {self.name}"
