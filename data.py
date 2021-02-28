@@ -8,7 +8,7 @@ class Data:
         self.filename = filename
         self.data = Data.read_json(filename)
         self.categories = []
-        self.format_data()
+        self.load_data()
 
     @staticmethod
     def read_json(filename: str) -> dict:
@@ -21,7 +21,7 @@ class Data:
         with open(filename, "w") as json_file:
             json.dump(data, json_file, indent=2)
 
-    def format_data(self):
+    def load_data(self):
         self.categories = [
             SuperCategory(name, info) for name, info in self.data.items()
         ]
@@ -48,7 +48,7 @@ class Data:
         self.data[super_category][sub_category].append(link)
 
         Data.write_json(self.filename, self.data)
-        self.format_data()
+        self.load_data()
 
 
 class SuperCategory:
@@ -56,9 +56,9 @@ class SuperCategory:
         self.name = name
         self.info = info
         self.sub_categories = []
-        self.format_info()
+        self.load_data()
 
-    def format_info(self):
+    def load_data(self):
         self.sub_categories = [
             SubCategory(name, info) for name, info in self.info.items()
         ]
@@ -80,11 +80,11 @@ class SubCategory:
         self.name = name
         self.info = info
         self.products = []
-        self.format_info()
+        self.load_data()
 
-    def format_info(self):
         for link in self.info:
             self.add_product(link)
+    def load_data(self):
 
     def add_product(self, link: str):
         new_product = Product(link)
