@@ -83,9 +83,7 @@ class SubCategory:
         self.load_data()
 
     def load_data(self):
-        self.products = [
-            Product(link) for link in self.data
-        ]
+        self.products = [Product(link) for link in self.data]
         # for link in self.data:
         #     self.add_product(link)
 
