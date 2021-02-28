@@ -52,21 +52,21 @@ class Data:
 
 
 class SuperCategory:
-    def __init__(self, name: str, info: dict) -> None:
+    def __init__(self, name: str, data: dict) -> None:
         self.name = name
-        self.info = info
+        self.data = data
         self.sub_categories = []
         self.load_data()
 
     def load_data(self):
         self.sub_categories = [
-            SubCategory(name, info) for name, info in self.info.items()
+            SubCategory(name, data) for name, data in self.data.items()
         ]
         # for sub_cat in self.info:
         #     self.add_sub_category(sub_cat, self.info[sub_cat])
 
-    def add_sub_category(self, name: str, info: dict):
-        new_sub_category = SubCategory(name, info)
+    def add_sub_category(self, name: str, data: dict):
+        new_sub_category = SubCategory(name, data)
         self.sub_categories.append(new_sub_category)
 
     def get_sub_category(self, sub_cat_name: str):
@@ -76,9 +76,9 @@ class SuperCategory:
 
 
 class SubCategory:
-    def __init__(self, name: str, info: dict) -> None:
+    def __init__(self, name: str, data: dict) -> None:
         self.name = name
-        self.info = info
+        self.data = data
         self.products = []
         self.load_data()
 
@@ -105,7 +105,7 @@ class SubCategory:
             thread.join()
 
     def __repr__(self) -> str:
-        return f"SubCategory(category_name={self.name}, category_info={self.info}"
+        return f"SubCategory(category_name={self.name}, category_info={self.data}"
 
     def __str__(self) -> str:
         return f"{self.name}"
