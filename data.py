@@ -1,6 +1,6 @@
 import json
 import threading
-from websites import get_domain_from_link, GET_WEBSITE_METHOD
+import websites as web
 
 
 class Data:
@@ -114,13 +114,13 @@ class SubCategory:
 class Product:
     def __init__(self, link: str) -> None:
         self.link = link
-        self.domain = get_domain_from_link(link)
+        self.domain = web.get_domain_from_link(link)
         self.name = None
         self.price = None
         # self.get_info()
 
     def get_info(self):
-        self.name, self.price = GET_WEBSITE_METHOD[self.domain](self.link)
+        self.name, self.price = web.GET_WEBSITE_METHOD[self.domain](self.link)
 
     def __str__(self) -> str:
         return f"{self.name} - {self.price}"
