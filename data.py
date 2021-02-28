@@ -82,9 +82,12 @@ class SubCategory:
         self.products = []
         self.load_data()
 
-        for link in self.info:
-            self.add_product(link)
     def load_data(self):
+        self.products = [
+            Product(link) for link in self.data
+        ]
+        # for link in self.data:
+        #     self.add_product(link)
 
     def add_product(self, link: str):
         new_product = Product(link)
